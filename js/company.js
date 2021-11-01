@@ -74,7 +74,11 @@ const getCompanyProfile = async (symbol) => {
 const displayCompany = (comp) => {
   const { image, companyName, description, website, changesPercentage, price } =
     comp;
-  document.getElementById('compImage').src = image;
+  const compImg = document.getElementById('compImage');
+  image != undefined
+    ? (compImg.src = image)
+    : (compImg.src = './images/noDataIcon.jpg');
+  compImg.setAttribute('onerror', `this.src='./images/noDataIcon.jpg'`);
   document.getElementById('name').innerText = companyName;
   compDescription.innerText = description;
   compPrice.innerText = `Stock price $${price}`;
