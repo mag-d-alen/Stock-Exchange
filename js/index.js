@@ -1,4 +1,6 @@
 /** @format */
+const querySymbol = new URL(document.location).searchParams.get('query');
+const input = document.getElementById('query-input');
 
 const fetchResults = async () => {
   try {
@@ -35,6 +37,26 @@ const displayResults = (data) => {
   });
 };
 
+const searchStart = () => {
+  results.innerHTML = '';
+  fetchResults(input.value);
+  spinner.classList.remove('hidden');
+};
+
+const debounce = (foo, timeout = 700) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      foo.apply(this, args);
+    }, timeout);
+  };
+};
+const autoSearch = debounce(() => searchStart());
+
 (() => {
-  document.getElementById('search').addEventListener('click', fetchResults);
+  const search = document.getElementById('search');
+  search.addEventListener('click', fetchResults);
+  input.addEventListener('input', autoSearch);
+  querySymbol && (input.value = querySymbol) && autoSearch();
 })();
