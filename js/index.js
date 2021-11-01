@@ -57,6 +57,5 @@ const autoSearch = debounce(() => searchStart());
 (() => {
   const search = document.getElementById('search');
   search.addEventListener('click', fetchResults);
-  input.addEventListener('input', autoSearch);
   querySymbol && (input.value = querySymbol) && autoSearch();
 })();
