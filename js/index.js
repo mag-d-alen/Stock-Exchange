@@ -20,10 +20,11 @@ const fetchResults = async () => {
 };
 const displayResults = (data) => {
   const results = document.getElementById('results');
-  data.map((company) => {
+  data.map((company, i) => {
     const result = document.createElement('div');
     const resultLink = document.createElement('a');
-    resultLink.setAttribute('href', `./company.html?symbol=${company.symbol}`);
+    result.id = i;
+    resultLink.setAttribute('href', `${SYMBOL_SUFFIX}${company.symbol}`);
     const symbolDiv = document.createElement('div');
     const nameDiv = document.createElement('div');
     nameDiv.textContent = company.name;
@@ -33,8 +34,47 @@ const displayResults = (data) => {
     symbolDiv.classList.add('symbol-div');
     result.classList.add('result');
     resultLink.classList.add('result-link');
+
     results.appendChild(result);
+    fetchExtraData(result.id, company.symbol);
   });
+};
+
+const fetchExtraData = async (id, symbol) => {
+  try {
+    const result = document.getElementById(id);
+    const profileImg = document.createElement('img');
+    profileImg.classList.add('profile-img');
+    const res = await fetch(`${COMP_URL}${symbol}`);
+    const data = await res.json();
+
+    if (data.profile) {
+      let { changesPercentage, image } = data.profile;
+      image != undefined
+        ? (profileImg.src = image)
+        : (profileImg.src = '../images/noDataIcon.jpg');
+      profileImg.setAttribute('onerror', `this.src='../images/noDataIcon.jpg'`);
+
+      const percentChange = document.createElement('div');
+      percentChange.innerText = changesPercentage;
+      percentChange.classList.add('profile-changes');
+      if (changesPercentage !== '(0%)') {
+        const percentShorten = Number(changesPercentage).toFixed(3);
+        percentChange.innertext = `${percentShorten} %`;
+        percentShorten > 0
+          ? percentChange.classList.add('green')
+          : percentChange.classList.add('red');
+      } else {
+        percentChange.innerHTML = 'No data on recent price changes';
+      }
+      result.append(percentChange);
+    } else {
+      profileImg.src = './images/noDataIcon.jpg';
+    }
+    result.prepend(profileImg);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const searchStart = () => {

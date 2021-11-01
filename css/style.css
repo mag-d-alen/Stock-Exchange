@@ -110,3 +110,20 @@ a {
   font-size: smaller;
   text-transform: uppercase;
 }
+.profile-img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.profile-changes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.red {
+  color: #ff8282;
+  font-size: large;
+}
+.green {
+  color: lightgreen;
+  font-size: large;
+}
