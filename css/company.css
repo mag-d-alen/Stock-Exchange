@@ -1,0 +1,117 @@
+/** @format */
+
+* {
+  font-family: Lato, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner::after {
+  content: '';
+  width: 8rem;
+  height: 8rem;
+  border: 0.7rem solid #f3f3f3;
+  border-top: 0.7rem solid #7e7776;
+  border-radius: 50%;
+  animation: spin 3s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hidden {
+  display: none;
+}
+
+.company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.company-name {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: slategrey;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.company-link {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: slategrey;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.company-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  line-height: 1.5rem;
+  font-size: smaller;
+  margin: 0 3rem;
+  width: 80%;
+}
+.company-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-img {
+  height: 5rem;
+  width: 5rem;
+  margin-right: 1rem;
+}
+.company-changes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.changes-red {
+  color: #ff8282;
+  font-size: large;
+}
+.changes-green {
+  color: lightgreen;
+  font-size: large;
+}
+.graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  height: 80%;
+  width: 80%;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}

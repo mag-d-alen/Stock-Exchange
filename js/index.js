@@ -1,10 +1,10 @@
 /** @format */
 
 const fetchResults = async () => {
-  const query = document.getElementById('query-input').value;
-  const loader = document.getElementById('spinner');
-  spinner.classList.remove('hidden');
   try {
+    const query = await document.getElementById('query-input').value;
+    const loader = document.getElementById('spinner');
+    spinner.classList.remove('hidden');
     const res = await fetch(
       `${RESULTS_URL}search?query=${query}&limit=${LIMIT}&exchange=NASDAQ`
     );

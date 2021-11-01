@@ -17,27 +17,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Stock Exchange</title>
+    <link rel="stylesheet" href="./css/company.css" />
+    <title>Company</title>
   </head>
   <body>
-    <header class="header">Search NSDAQ Stocks</header>
-    <section class="main">
-      <navbar class="navbar">
-        <div class="inputbox">
-          <input
-            type="text"
-            id="query-input"
-            class="input"
-            placeholder="Search stock... "
-          />
-        </div>
-        <button class="btn" id="search">Search</button>
-      </navbar>
-      <div id="spinner" class="spinner hidden"></div>
+    <div id="company-content-wrapper" class="wrapper">
+      <div class="spinner hidden" id="spinner"></div>
+    </div>
 
-      <div id="results" class="results"></div>
-    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
     <script src="./js/constants.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/company.js"></script>
   </body>
 </html>
