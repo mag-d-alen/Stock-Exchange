@@ -35,7 +35,6 @@ const makeElements = () => {
   link.classList.add('company-link');
   compPrice.classList.add('company-price');
   compDescription.classList.add('company-description');
-  graph.classList.add('graph');
   container.classList.add('container');
   graph.classList.add('graph');
 

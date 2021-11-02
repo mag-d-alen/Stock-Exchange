@@ -100,6 +100,13 @@
   color: lightgreen;
   font-size: large;
 }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  width: 60%;
+}
 .graph {
   display: flex;
   justify-content: center;
