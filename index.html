@@ -41,6 +41,13 @@
     </section>
     <script src="./js/constants.js"></script>
     <script src="./js/marquee.js"></script>
+    <script src="./Marquee.js"></script>
     <script src="./js/index.js"></script>
+    <script>
+      (async () => {
+        const marquee = new Marquee(document.getElementById('marquee'));
+        marquee.fetchMarquee();
+      })();
+    </script>
   </body>
 </html>
