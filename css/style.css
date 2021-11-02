@@ -160,3 +160,7 @@ a {
   padding: 0 0.3rem;
   margin-right: 0.5rem;
 }
+mark {
+  font-size: inherit;
+  color: inherit;
+}

@@ -2,6 +2,13 @@
 const querySymbol = new URL(document.location).searchParams.get('query');
 const input = document.getElementById('query-input');
 
+const highlight = (string) => {
+  const querySymbol = input.value;
+  const reg = new RegExp(querySymbol, 'ig');
+  const newText = '<mark>$&</mark>';
+  return string.replace(reg, newText);
+};
+
 const fetchResults = async () => {
   try {
     const query = await document.getElementById('query-input').value;
@@ -28,8 +35,8 @@ const displayResults = (data) => {
     resultLink.target = '_blank';
     const symbolDiv = document.createElement('div');
     const nameDiv = document.createElement('div');
-    nameDiv.textContent = company.name;
-    symbolDiv.textContent = company.symbol;
+    nameDiv.innerHTML = highlight(company.name);
+    symbolDiv.innerHTML = highlight(company.symbol);
     resultLink.prepend(symbolDiv, nameDiv);
     result.append(resultLink);
     symbolDiv.classList.add('symbol-div');
@@ -96,7 +103,6 @@ const debounce = (foo, timeout = 700) => {
 const autoSearch = debounce(() => searchStart());
 
 (() => {
-  marqueeFetch();
   input.addEventListener('input', autoSearch);
   const search = document.getElementById('search');
   search.addEventListener('click', fetchResults);
