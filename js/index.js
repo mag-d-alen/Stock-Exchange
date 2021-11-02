@@ -25,6 +25,7 @@ const displayResults = (data) => {
     const resultLink = document.createElement('a');
     result.id = i;
     resultLink.setAttribute('href', `${SYMBOL_SUFFIX}${company.symbol}`);
+    resultLink.target = '_blank';
     const symbolDiv = document.createElement('div');
     const nameDiv = document.createElement('div');
     nameDiv.textContent = company.name;
@@ -95,6 +96,7 @@ const debounce = (foo, timeout = 700) => {
 const autoSearch = debounce(() => searchStart());
 
 (() => {
+  marqueeFetch();
   input.addEventListener('input', autoSearch);
   const search = document.getElementById('search');
   search.addEventListener('click', fetchResults);

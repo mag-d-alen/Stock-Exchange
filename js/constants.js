@@ -8,3 +8,5 @@ const SYMBOL_SUFFIX = './company.html?symbol=';
 const HISTORIC_URL =
   'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/historical-price-full/';
 const SERIE = '?serietype=line';
+const MARQUEE_URL =
+  'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/available-traded/list';
