@@ -42,11 +42,15 @@
     <script src="./js/constants.js"></script>
     <script src="./js/marquee.js"></script>
     <script src="./Marquee.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/Search.js"></script>
+    <script src="./js/SearchResults.js"></script>
+    <!-- <script src="./js/index.js"></script> -->
     <script>
       (async () => {
         const marquee = new Marquee(document.getElementById('marquee'));
         marquee.fetchMarquee();
+        const search = new Search(document.getElementById('query-input'));
+        search.init();
       })();
     </script>
   </body>

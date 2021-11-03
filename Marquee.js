@@ -2,7 +2,7 @@
 
 class Marquee {
   constructor(marquee) {
-    this.marquee = document.getElementById('marquee');
+    this.marquee = marquee;
   }
 
   async fetchMarquee() {

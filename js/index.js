@@ -116,6 +116,6 @@ const autoSearch = debounce(() => searchStart());
   input.addEventListener('input', autoSearch);
   const search = document.getElementById('search');
   search.addEventListener('click', fetchResults);
-  //checking for query in url
+  checking for query in url
   querySymbol && (input.value = querySymbol) && autoSearch();
 })();
