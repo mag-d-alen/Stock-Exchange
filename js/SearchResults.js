@@ -21,14 +21,20 @@ class SearchResults {
       const profileImg = document.createElement('img');
       const symbolDiv = document.createElement('div');
       const nameDiv = document.createElement('div');
+      const percentChange = document.createElement('div');
+      const compareBtn = document.createElement('div');
 
       resultLink.setAttribute('href', `${SYMBOL_SUFFIX}${company.symbol}`);
       resultLink.target = '_blank';
       nameDiv.innerHTML = this.highlight(company.profile.companyName);
       symbolDiv.innerHTML = this.highlight(company.symbol);
+      compareBtn.value = company.symbol;
+
+      compareBtn.innerText = 'Compare';
       symbolDiv.classList.add('symbol-div');
       result.classList.add('result');
       resultLink.classList.add('result-link');
+      compareBtn.classList.add('btn');
 
       profileImg.classList.add('profile-img');
       if (company.profile) {
@@ -42,10 +48,11 @@ class SearchResults {
         );
         resultLink.prepend(symbolDiv, nameDiv);
         result.append(resultLink);
+        result.append(percentChange);
+        result.append(compareBtn);
         result.prepend(profileImg);
         results.appendChild(result);
 
-        const percentChange = document.createElement('div');
         percentChange.innerText = changesPercentage;
         percentChange.classList.add('profile-changes');
         if (changesPercentage !== '(0%)') {
@@ -57,10 +64,14 @@ class SearchResults {
         } else {
           percentChange.innerHTML = 'No data on recent price changes';
         }
-        result.append(percentChange);
       } else {
         profileImg.src = './images/noDataIcon.jpg';
       }
+
+      compareBtn.addEventListener('click', this.addToCompare);
     });
+  }
+  addToCompare(e) {
+    console.log('add', e.target.value);
   }
 }

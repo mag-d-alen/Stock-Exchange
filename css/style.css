@@ -60,16 +60,18 @@ a {
   font-weight: 600;
 }
 .btn {
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.8rem;
   border-radius: 0.2rem;
   border: 0.2rem solid darkgray;
+  background-color: rgb(159, 170, 182);
 }
 .btn:active {
-  background-color: slategrey;
-  color: lightgrey;
+  color: slategrey;
+  background-color: lightgrey;
 }
 .spinner {
   display: flex;
@@ -110,12 +112,16 @@ a {
   padding: 0.5rem;
   border-bottom: 2px solid lightgrey;
 }
+.result :last-child {
+  margin-left: auto;
+}
 .result-link {
   display: flex;
   padding: 1rem;
   justify-content: center;
   align-items: center;
 }
+
 .symbol-div {
   padding: 1rem;
   color: slategrey;
