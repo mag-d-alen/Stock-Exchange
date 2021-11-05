@@ -1,9 +1,8 @@
 /** @format */
 
 class SearchResults {
-  constructor(location, companies) {
+  constructor(location) {
     this.location = location;
-    this.companies = companies;
   }
   highlight(string) {
     const input = document.getElementById('query-input');
@@ -12,9 +11,9 @@ class SearchResults {
     const newText = '<mark>$&</mark>';
     return string.replace(reg, newText);
   }
-  displayCompany() {
+  displayCompany(companies) {
     const input = document.getElementById('query-input');
-    this.companies.map((company) => {
+    companies.map((company) => {
       const results = document.getElementById('results');
       const result = document.createElement('div');
       const resultLink = document.createElement('a');
@@ -67,11 +66,11 @@ class SearchResults {
       } else {
         profileImg.src = './images/noDataIcon.jpg';
       }
-
       compareBtn.addEventListener('click', this.addToCompare);
     });
   }
   addToCompare(e) {
-    console.log('add', e.target.value);
+    const compare = new Compare(document.getElementById('compare-bar'));
+    return e.target.value;
   }
 }

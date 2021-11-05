@@ -37,6 +37,7 @@ a {
 /* navbar and search */
 .navbar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -49,7 +50,7 @@ a {
   width: 80%;
   height: 3vh;
   border: 2px solid lightgrey;
-  padding: 0.8rem;
+  padding: 1rem 0 1rem 1rem;
   border-radius: 0.2rem;
 }
 
@@ -77,6 +78,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-self: center;
 }
 .spinner::after {
   content: '';
@@ -156,10 +158,10 @@ a {
     transform: translateX(0%);
   }
   50% {
-    transform: translateX(50%);
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 }
 .marquee-item {
@@ -169,4 +171,36 @@ a {
 mark {
   font-size: inherit;
   color: inherit;
+}
+.compare-bar {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: lightgray;
+  width: 80%;
+}
+.company-to-compare {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 0.2rem;
+  border: 0.2rem solid darkgray;
+  background-color: rgb(159, 170, 182);
+  margin: 0.2rem;
+}
+.delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  width: 1rem;
+  background-color: black;
+  color: white;
+  padding: 0.3rem;
+  margin: 0.3rem 0.3rem 0.3rem;
+  border-radius: 0.2rem;
 }

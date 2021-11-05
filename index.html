@@ -21,22 +21,11 @@
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
   </head>
   <body>
-    <header class="header">Search NSDAQ Stocks</header>
     <section id="marquee" class="marquee"></section>
     <section class="main">
-      <navbar class="navbar">
-        <div class="inputbox">
-          <input
-            type="text"
-            id="query-input"
-            class="input"
-            placeholder="Search stock... "
-          />
-        </div>
-        <button class="btn" id="search">Search</button>
-      </navbar>
-      <div id="spinner" class="spinner hidden"></div>
-
+      <div id="compare-bar" class="compare-bar"></div>
+      <header class="header">Search NSDAQ Stocks</header>
+      <navbar class="navbar" id="navbar"></navbar>
       <div id="results" class="results"></div>
     </section>
     <script src="./js/constants.js"></script>
@@ -44,13 +33,18 @@
     <script src="./js/Marquee.js"></script>
     <script src="./js/Search.js"></script>
     <script src="./js/SearchResults.js"></script>
+    <script src="./js/Compare.js"></script>
     <!-- <script src="./js/index.js"></script> -->
     <script>
       (async () => {
         const marquee = new Marquee(document.getElementById('marquee'));
         marquee.fetchMarquee();
-        const search = new Search(document.getElementById('query-input'));
+        const search = new Search(document.getElementById('navbar'));
         search.init();
+        const searchResults = new SearchResults(
+          document.getElementById('results')
+        );
+        search.onSearch((companies) => searchResults.displayCompany(companies));
       })();
     </script>
   </body>

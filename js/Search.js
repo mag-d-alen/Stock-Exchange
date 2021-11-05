@@ -1,23 +1,45 @@
 /** @format */
 class Search {
-  constructor(input) {
-    this.input = input;
+  constructor(location) {
+    this.location = location;
+
+    const inputbox = document.createElement('div');
+    inputbox.classList.add('inputbox');
+
+    this.input = document.createElement('input');
+    this.input.id = 'query-input';
+    this.input.classList.add('input');
+    this.input.placeholder = 'Search stock... ';
+
+    const searchBtn = document.createElement('button');
+    searchBtn.id = 'search';
+    searchBtn.classList.add('btn');
+    searchBtn.innerText = 'Search';
+
+    this.spinner = document.createElement('div');
+    this.spinner.classList.add('spinner', 'hidden');
+
+    inputbox.append(this.input, searchBtn);
+    this.location.append(inputbox, this.spinner);
   }
 
-  async fetchResults() {
+  async fetchResults(callback) {
+    const query = this.value;
     try {
-      const query = await this.input.value;
-      const loader = document.getElementById('spinner');
-      spinner.classList.remove('hidden');
+      const loader = document.getElementById('this.spinner');
+      this.spinner.classList.remove('hidden');
       const res = await fetch(
         `${RESULTS_URL}search?query=${query}&limit=${LIMIT}&exchange=NASDAQ`
       );
       const data = await res.json();
-      this.fetchExtraData(data);
+      console.log(data);
+      const companies = await this.fetchExtraData(data);
+      this.callback(companies);
+      // return companies;
     } catch (error) {
       console.log(error);
     } finally {
-      spinner.classList.add('hidden');
+      this.spinner.classList.add('hidden');
     }
   }
 
@@ -42,24 +64,20 @@ class Search {
               : companies.push(item)
           )
         );
-      this.displayCompanies(companies);
+      return companies;
     } catch (error) {
       console.log(error);
     }
   }
 
-  displayCompanies(companies) {
-    const searchResults = new SearchResults(
-      document.getElementById('results'),
-      companies
-    );
-    searchResults.displayCompany();
-  }
-
   searchStart(value) {
     results.innerHTML = '';
+    this.value = value;
     this.fetchResults(value);
-    spinner.classList.remove('hidden');
+    this.spinner.classList.remove('hidden');
+  }
+  onSearch(callback) {
+    this.callback = callback;
   }
 
   init() {
@@ -68,6 +86,7 @@ class Search {
     querySymbol &&
       (this.input.value = querySymbol) &&
       this.searchStart(querySymbol);
+
     let debounceTimeout;
     this.input.addEventListener('keyup', async (event) => {
       clearTimeout(debounceTimeout);
