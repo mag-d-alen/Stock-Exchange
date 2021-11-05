@@ -32,7 +32,6 @@ class Search {
         `${RESULTS_URL}search?query=${query}&limit=${LIMIT}&exchange=NASDAQ`
       );
       const data = await res.json();
-      console.log(data);
       const companies = await this.fetchExtraData(data);
       this.callback(companies);
       // return companies;

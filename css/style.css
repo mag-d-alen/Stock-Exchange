@@ -149,6 +149,7 @@ a {
 }
 .marquee {
   display: flex;
+  width: 100vw;
   padding: 1rem;
   animation: slide 100s infinite;
   font-size: 1.5rem;
@@ -161,7 +162,7 @@ a {
     transform: translateX(100%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-10%);
   }
 }
 .marquee-item {
