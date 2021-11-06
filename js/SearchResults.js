@@ -69,8 +69,26 @@ class SearchResults {
       compareBtn.addEventListener('click', this.addToCompare);
     });
   }
+
   addToCompare(e) {
-    const compare = new Compare(document.getElementById('compare-bar'));
-    return e.target.value;
+    const compareBar = document.getElementById('compare-bar');
+    const companyToCompare = document.createElement('div');
+    const removeCompany = document.createElement('button');
+    companyToCompare.classList.add('company-to-compare');
+    removeCompany.classList.add('delete');
+    companyToCompare.textContent = e.target.value;
+    removeCompany.textContent = 'x';
+    removeCompany.id = e.target.value;
+    removeCompany.addEventListener('click', (e) => {
+      const toDelete = document.getElementById(e.target.id).parentNode;
+      compareBar.removeChild(toDelete);
+    });
+    companyToCompare.append(removeCompany);
+    compareBar.append(companyToCompare);
+  }
+
+  init(companies) {
+    let callback;
+    displayCompany(companies);
   }
 }

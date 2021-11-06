@@ -4,7 +4,6 @@ class Compare {
   constructor(location) {
     this.location = location;
   }
-
   addToCompare(symbol) {
     const companyToCompare = document.createElement('div');
     const deleteComp = document.createElement('button');
@@ -17,7 +16,8 @@ class Compare {
     companyToCompare.append(deleteComp);
     this.location.appendChild(companyToCompare);
   }
-  deleteCompany(e) {
+
+  deleteComp() {
     const toDelete = document.getElementById(e.target.id).parentElement;
     document.getElementById('compare-bar').removeChild(toDelete);
   }
@@ -25,11 +25,13 @@ class Compare {
     console.log(e);
   }
   init(symbol) {
+    if (!symbol) return;
     console.log(symbol);
     const compareCompaniesBtn = document.createElement('button');
     compareCompaniesBtn.classList.add('btn');
     compareCompaniesBtn.addEventListener('click', this.compareCompanies);
     console.log(this.location);
     this.location.appendChild(compareCompaniesBtn);
+    this.addToCompare(symbol);
   }
 }

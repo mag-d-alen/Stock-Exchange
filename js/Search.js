@@ -14,13 +14,13 @@ class Search {
     const searchBtn = document.createElement('button');
     searchBtn.id = 'search';
     searchBtn.classList.add('btn');
-    searchBtn.innerText = 'Search';
+    searchBtn.innerText = 'Search Stocks';
 
     this.spinner = document.createElement('div');
     this.spinner.classList.add('spinner', 'hidden');
 
-    inputbox.append(this.input, searchBtn);
-    this.location.append(inputbox, this.spinner);
+    inputbox.append(this.input);
+    this.location.append(inputbox, searchBtn, this.spinner);
   }
 
   async fetchResults(callback) {
