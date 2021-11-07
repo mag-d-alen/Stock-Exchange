@@ -33,7 +33,7 @@
     <script src="./js/Marquee.js"></script>
     <script src="./js/Search.js"></script>
     <script src="./js/SearchResults.js"></script>
-    <!-- <script src="./js/Compare.js"></script> -->
+    <script src="./js/Compare.js"></script>
     <!-- <script src="./js/index.js"></script> -->
     <script>
       (async () => {
@@ -45,11 +45,6 @@
           document.getElementById('results')
         );
         search.onSearch((companies) => searchResults.displayCompany(companies));
-
-        // const compare = new Compare(document.getElementById('compare-bar'));
-        // searchResults.onSearch((companies) =>
-        //   searchResults.displayCompany(companies)
-        //);
       })();
     </script>
   </body>

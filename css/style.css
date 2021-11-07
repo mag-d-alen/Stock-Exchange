@@ -149,17 +149,18 @@ a {
 }
 .marquee {
   display: flex;
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
   animation: slide 100s infinite;
   font-size: 1.5rem;
+  overflow: hidden;
 }
 @keyframes slide {
   0% {
     transform: translateX(0%);
   }
   50% {
-    transform: translateX(100%);
+    transform: translateX(50%);
   }
   100% {
     transform: translateX(-10%);
@@ -180,7 +181,8 @@ mark {
   padding: 1rem;
   margin: 1rem 0;
   background-color: lightgray;
-  width: 80%;
+  width: 50%;
+  border-radius: 0.2rem;
 }
 .company-to-compare {
   color: white;
@@ -204,4 +206,11 @@ mark {
   padding: 0.3rem;
   margin: 0.3rem 0.3rem 0.3rem;
   border-radius: 0.2rem;
+}
+.compare-link {
+  display: flex;
+  justify-self: flex-end;
+  justify-content: center;
+  background-color: cadetblue;
+  color: white;
 }

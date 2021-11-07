@@ -4,10 +4,12 @@ class Company {
   constructor(location, symbol) {
     this.location = location;
     this.symbol = symbol;
+    this.getCompanyProfile(symbol);
+    this.fetchHistoricData(symbol);
   }
 
   makeElements() {
-    const wrapper = document.getElementById('company-content-wrapper');
+    const wrapper = this.location;
     const company = document.createElement('div');
     const compPrice = document.createElement('div');
     const compImage = document.createElement('img');

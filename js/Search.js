@@ -34,7 +34,6 @@ class Search {
       const data = await res.json();
       const companies = await this.fetchExtraData(data);
       this.callback(companies);
-      // return companies;
     } catch (error) {
       console.log(error);
     } finally {
@@ -52,17 +51,14 @@ class Search {
         fetch(`${COMP_URL}${symbols.splice(0, 3)}`),
         fetch(`${COMP_URL}${symbols.splice(0, 3)}`),
         fetch(`${COMP_URL}${symbols.splice(0, 3)}`),
-      ])
-        .then((resps) => Promise.all(resps.map((res) => res.json())))
-        .then((data) =>
-          data.map((item) =>
-            item.companyProfiles
-              ? item.companyProfiles.forEach((profile) =>
-                  companies.push(profile)
-                )
-              : companies.push(item)
-          )
-        );
+      ]);
+      const data = await Promise.all(res.map((response) => response.json()));
+
+      data.map((item) =>
+        item.companyProfiles
+          ? item.companyProfiles.forEach((profile) => companies.push(profile))
+          : companies.push(item)
+      );
       return companies;
     } catch (error) {
       console.log(error);

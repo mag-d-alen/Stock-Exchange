@@ -33,7 +33,7 @@ class SearchResults {
       symbolDiv.classList.add('symbol-div');
       result.classList.add('result');
       resultLink.classList.add('result-link');
-      compareBtn.classList.add('btn');
+      compareBtn.classList.add('btn', 'compareBtn');
 
       profileImg.classList.add('profile-img');
       if (company.profile) {
@@ -54,6 +54,7 @@ class SearchResults {
 
         percentChange.innerText = changesPercentage;
         percentChange.classList.add('profile-changes');
+
         if (changesPercentage !== '(0%)') {
           const percentShorten = Number(changesPercentage).toFixed(3);
           percentChange.innertext = `${percentShorten} %`;
@@ -66,29 +67,15 @@ class SearchResults {
       } else {
         profileImg.src = './images/noDataIcon.jpg';
       }
-      compareBtn.addEventListener('click', this.addToCompare);
     });
+    this.addComparison();
   }
 
-  addToCompare(e) {
-    const compareBar = document.getElementById('compare-bar');
-    const companyToCompare = document.createElement('div');
-    const removeCompany = document.createElement('button');
-    companyToCompare.classList.add('company-to-compare');
-    removeCompany.classList.add('delete');
-    companyToCompare.textContent = e.target.value;
-    removeCompany.textContent = 'x';
-    removeCompany.id = e.target.value;
-    removeCompany.addEventListener('click', (e) => {
-      const toDelete = document.getElementById(e.target.id).parentNode;
-      compareBar.removeChild(toDelete);
-    });
-    companyToCompare.append(removeCompany);
-    compareBar.append(companyToCompare);
+  addComparison() {
+    const compare = new Compare(document.getElementById('compare-bar'));
+    return compare;
   }
-
   init(companies) {
-    let callback;
     displayCompany(companies);
   }
 }
