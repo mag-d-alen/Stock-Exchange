@@ -21,21 +21,21 @@ class Compare {
     if (!this.symbols.includes(symbol)) {
       this.symbols.push(symbol);
       const companyToCompare = document.createElement('div');
-      const deleteComp = document.createElement('button');
+      const deleteCompany = document.createElement('button');
       companyToCompare.classList.add('company-to-compare');
       companyToCompare.innerText = symbol;
-      deleteComp.classList.add('delete');
-      deleteComp.id = symbol;
-      deleteComp.innerText = 'X';
-      deleteComp.addEventListener('click', this.removeFromCompare);
-      companyToCompare.append(deleteComp);
+      deleteCompany.classList.add('delete');
+      deleteCompany.id = symbol;
+      deleteCompany.innerText = 'X';
+      deleteCompany.addEventListener('click', this.removeFromCompare);
+      companyToCompare.append(deleteCompany);
       this.location.appendChild(companyToCompare);
       this.checkLength();
     }
   };
 
   removeFromCompare = (e) => {
-    const toDelete = document.getElementById(e.target.id).parentElement;
+    const elemenToDelete = document.getElementById(e.target.id).parentElement;
     this.location.removeChild(toDelete);
     this.symbols = this.symbols.filter((symbol) => symbol != e.target.id);
     this.checkLength();
