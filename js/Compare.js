@@ -59,15 +59,13 @@ class Compare {
       compare.href = `compare.html?symbols=${this.symbols}`;
       this.location.parentNode.prepend(compare);
     }
-    if (this.symbols.length < 3) {
-      compare.innerText = '';
-      compare.href = '';
-      this.buttons.forEach((button) => button.classList.remove('hidden'));
-    }
     if (this.symbols.length === 3) {
       compare.innerText = `Compare ${this.symbols.length} companies`;
       compare.href = `../compare.html?symbols=${this.symbols}`;
       this.buttons.forEach((button) => button.classList.add('hidden'));
+    }
+    if (this.symbols.length < 3) {
+      this.buttons.forEach((button) => button.classList.remove('hidden'));
     }
   }
 }
