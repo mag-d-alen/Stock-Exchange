@@ -1,0 +1,33 @@
+/** @format */
+
+body {
+  background-color: rgba(190, 184, 184, 0.3);
+}
+.header {
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+  color: rgba(190, 184, 184);
+}
+.companies {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: inherit;
+  justify-content: space-evenly;
+}
+.company {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border-radius: 0.2rem;
+  margin: 3rem 1rem;
+}
+.company-name {
+  font-size: 1.5rem;
+}
+.company-description {
+  width: 30rem;
+}

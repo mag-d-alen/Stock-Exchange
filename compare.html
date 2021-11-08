@@ -13,7 +13,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/company.css" />
-     <!-- <link rel="stylesheet" href="./css/compare.css" /> -->
+    <link rel="stylesheet" href="./css/compare.css" />
+
+
 
     <title>Compare Stocks</title>
   </head>
@@ -21,24 +23,18 @@
     <header class="header">Compare Stocks</header>
     <div id="content-wrapper" class="content-wrapper">     <div class="spinner hidden" id="spinner"></div>
       </section>
-      <section id="company-wrapper" class="companies">
+      <section id="companies-wrapper" class="companies">
    
     </div>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
- <script src="./js/constants.js"></script>
-<script src="./js/Company.js"></script>
-   
-   
-     <script>
-      ( function () {
-        const urlParams = new URLSearchParams(window.location.search); 
-        const companies = urlParams.get('symbols').split(",").map(symbol=> new Company(
-          document.getElementById('company-wrapper'),
-          symbol
-        ));
-       companies.forEach(company =>{ 
-        company.makeElements();
-      })
+  <script src="./js/constants.js"></script>
+  <script src="./js/Company.js"></script>
+  <script src="./js/CompareClasses.js"></script>
+  <script>
+      (()=>{
+    const compareClasses = new CompareClasses(document.getElementById("companies-wrapper"));
+     compareClasses.displayComparedCompanies() 
+
       })();
     </script>
     

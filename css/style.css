@@ -147,29 +147,31 @@ a {
   color: rgb(32, 141, 32);
   font-size: large;
 }
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+}
 .marquee {
   display: flex;
-  width: 100%;
+  width: 200%;
   padding: 1rem;
-  animation: slide 100s infinite;
   font-size: 1.5rem;
-  overflow: hidden;
-}
-@keyframes slide {
-  0% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(50%);
-  }
-  100% {
-    transform: translateX(-10%);
-  }
+  animation: slide 250s linear infinite;
 }
 .marquee-item {
   padding: 0 0.3rem;
   margin-right: 0.5rem;
 }
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 mark {
   font-size: inherit;
   color: inherit;
@@ -180,7 +182,7 @@ mark {
   align-items: center;
   padding: 1rem;
   margin: 1rem 0;
-  background-color: lightgray;
+  background-color: rgba(190, 184, 184, 0.3);
   width: 50%;
   border-radius: 0.2rem;
 }
@@ -209,8 +211,8 @@ mark {
 }
 .compare-link {
   display: flex;
-  justify-self: flex-end;
   justify-content: center;
-  background-color: cadetblue;
-  color: white;
+  color: cadetblue;
+  font-size: larger;
+  margin: 3rem 0 2rem 0;
 }

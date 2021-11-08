@@ -4,6 +4,9 @@ class Company {
   constructor(location, symbol) {
     this.location = location;
     this.symbol = symbol;
+    this.myChart = document.createElement('canvas');
+
+    this.makeElements();
     this.getCompanyProfile(symbol);
     this.fetchHistoricData(symbol);
   }
@@ -19,16 +22,15 @@ class Company {
     const changes = document.createElement('div');
     const graph = document.createElement('section');
     const container = document.createElement('div');
-    const myChart = document.createElement('canvas');
 
-    company.id = 'company';
-    compPrice.id = 'compPrice';
-    compImage.id = 'compImage';
-    name.id = 'name';
-    compDescription.id = 'compDescription';
-    link.id = 'link';
-    changes.id = 'changes';
-    myChart.id = 'myChart';
+    company.id = `company${this.symbol}`;
+    compPrice.id = `compPrice${this.symbol}`;
+    compImage.id = `compImage${this.symbol}`;
+    name.id = `name${this.symbol}`;
+    compDescription.id = `compDescription${this.symbol}`;
+    link.id = `link${this.symbol}`;
+    changes.id = `changes${this.symbol}`;
+    this.myChart.id = `myChart${this.symbol}`;
 
     link.textContent = 'Visit our site';
     link.target = '_blank';
@@ -44,8 +46,8 @@ class Company {
     graph.classList.add('graph');
 
     graph.append(container);
-    container.append(myChart);
-    myChart.getContext('2d');
+    container.append(this.myChart);
+    this.myChart.getContext('2d');
 
     company.append(
       compImage,
@@ -84,16 +86,19 @@ class Company {
       changesPercentage,
       price,
     } = comp;
-    const compImg = document.getElementById('compImage');
+    const compImg = document.getElementById(`compImage${this.symbol}`);
     image != undefined
       ? (compImg.src = image)
       : (compImg.src = './images/noDataIcon.jpg');
     compImg.setAttribute('onerror', `this.src='./images/noDataIcon.jpg'`);
-    document.getElementById('name').innerText = companyName;
-    compDescription.innerText = description;
-    compPrice.innerText = `Stock price $${price}`;
-    link.href = website;
-    const changes = document.getElementById('changes');
+    document.getElementById(`name${this.symbol}`).innerText = companyName;
+    document.getElementById(`compDescription${this.symbol}`).innerText =
+      description;
+    document.getElementById(
+      `compPrice${this.symbol}`
+    ).innerText = `Stock price $${price}`;
+    document.getElementById(`link${this.symbol}`).href = website;
+    const changes = document.getElementById(`changes${this.symbol}`);
     if (changesPercentage !== '(0%)') {
       const percentShorten = Number(changesPercentage).toFixed(3);
       changes.innerText = `${percentShorten} %`;
@@ -116,7 +121,7 @@ class Company {
       const prices = [];
       data.historical.slice(0, 100).map((entry) => dates.push(entry.date));
       data.historical.slice(0, 100).map((entry) => prices.push(entry.close));
-      const stocksChart = new Chart(myChart, {
+      const stocksChart = new Chart(this.myChart, {
         type: 'bar',
         data: {
           labels: dates.reverse(),

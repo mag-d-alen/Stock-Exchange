@@ -1,8 +1,8 @@
 /** @format */
 
 class Marquee {
-  constructor(marquee) {
-    this.marquee = marquee;
+  constructor(marqueeWrapper) {
+    this.marqueeWrapper = marqueeWrapper;
   }
 
   async fetchMarquee() {
@@ -14,8 +14,11 @@ class Marquee {
       console.error(error.message);
     }
   }
+
   createMarquee(data) {
+    const marquee = document.createElement('div');
     data.slice(0, 1500).map((item) => {
+      marquee.classList.add('marquee');
       const marqueeItem = document.createElement('div');
       const itemPrice = document.createElement('span');
       marqueeItem.classList.add('marquee-item');
@@ -25,7 +28,8 @@ class Marquee {
         ? itemPrice.classList.add('green')
         : itemPrice.classList.add('red');
       marqueeItem.append(itemPrice);
-      this.marquee.append(marqueeItem);
+      marquee.append(marqueeItem);
     });
+    this.marqueeWrapper.append(marquee);
   }
 }

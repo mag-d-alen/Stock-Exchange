@@ -18,10 +18,10 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <title>Stock Exchange</title>
-    <link rel="shortcut icon" href="favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png" />
   </head>
   <body>
-    <section id="marquee" class="marquee"></section>
+    <section id="marqueeWrapper" class="marquee-wrapper"></section>
     <section class="main">
       <div id="compare-bar" class="compare-bar"></div>
       <header class="header">Search NSDAQ Stocks</header>
@@ -37,8 +37,8 @@
     <!-- <script src="./js/index.js"></script> -->
     <script>
       (async () => {
-        const marquee = new Marquee(document.getElementById('marquee'));
-        marquee.fetchMarquee();
+        const marquee = new Marquee(document.getElementById('marqueeWrapper'));
+        await marquee.fetchMarquee();
         const search = new Search(document.getElementById('navbar'));
         search.init();
         const searchResults = new SearchResults(

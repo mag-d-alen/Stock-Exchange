@@ -68,12 +68,7 @@ class SearchResults {
         profileImg.src = './images/noDataIcon.jpg';
       }
     });
-    this.addComparison();
-  }
-
-  addComparison() {
     const compare = new Compare(document.getElementById('compare-bar'));
-    return compare;
   }
   init(companies) {
     displayCompany(companies);
