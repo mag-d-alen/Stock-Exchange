@@ -23,7 +23,7 @@ class Search {
     this.location.append(inputbox, searchBtn, this.spinner);
   }
 
-  async fetchResults(callback) {
+  async fetchResults() {
     const query = this.value;
     try {
       const loader = document.getElementById('this.spinner');
@@ -33,7 +33,10 @@ class Search {
       );
       const data = await res.json();
       const companies = await this.fetchExtraData(data);
-      this.callback(companies);
+      const searchResults = new SearchResults(
+        document.getElementById('results')
+      );
+      searchResults.displayCompany(companies);
     } catch (error) {
       console.log(error);
     } finally {
@@ -71,12 +74,8 @@ class Search {
     this.fetchResults(value);
     this.spinner.classList.remove('hidden');
   }
-  onSearch(callback) {
-    this.callback = callback;
-  }
 
   init() {
-    //checking for query in url
     const querySymbol = new URL(document.location).searchParams.get('query');
     querySymbol &&
       (this.input.value = querySymbol) &&

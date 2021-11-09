@@ -35,8 +35,8 @@ class Compare {
   };
 
   removeFromCompare = (e) => {
-    const elemenToDelete = document.getElementById(e.target.id).parentElement;
-    this.location.removeChild(toDelete);
+    const elementToDelete = document.getElementById(e.target.id).parentElement;
+    this.location.removeChild(elementToDelete);
     this.symbols = this.symbols.filter((symbol) => symbol != e.target.id);
     this.checkLength();
   };
@@ -45,23 +45,23 @@ class Compare {
     const compare = document.createElement('a');
     compare.id = 'compare';
     compare.classList.add('compare-link');
+
     !this.location.hasChildNodes(compare) && this.location.append(compare);
   }
 
   checkLength() {
     const compare = document.getElementById('compare');
     if (this.symbols.length <= 1 || this.symbols.length > 3) {
-      compare.innerText = '';
+      compare.textContent = '';
       compare.href = '';
     }
     if (this.symbols.length === 2) {
-      compare.innerText = `Compare ${this.symbols.length} companies`;
-      compare.href = `compare.html?symbols=${this.symbols}`;
-      this.location.parentNode.prepend(compare);
+      (compare.innerText = `Compare ${this.symbols.length} companies`),
+        (compare.href = `compare.html?symbols=${this.symbols}`);
     }
     if (this.symbols.length === 3) {
-      compare.innerText = `Compare ${this.symbols.length} companies`;
-      compare.href = `../compare.html?symbols=${this.symbols}`;
+      (compare.innerText = `Compare ${this.symbols.length} companies`),
+        (compare.href = `compare.html?symbols=${this.symbols}`);
       this.buttons.forEach((button) => button.classList.add('hidden'));
     }
     if (this.symbols.length < 3) {

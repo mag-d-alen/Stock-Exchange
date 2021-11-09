@@ -29,22 +29,16 @@
       <div id="results" class="results"></div>
     </section>
     <script src="./js/constants.js"></script>
-    <!-- <script src="./js/marquee.js"></script> -->
     <script src="./js/Marquee.js"></script>
     <script src="./js/Search.js"></script>
     <script src="./js/SearchResults.js"></script>
     <script src="./js/Compare.js"></script>
-    <!-- <script src="./js/index.js"></script> -->
     <script>
       (async () => {
         const marquee = new Marquee(document.getElementById('marqueeWrapper'));
         await marquee.fetchMarquee();
         const search = new Search(document.getElementById('navbar'));
         search.init();
-        const searchResults = new SearchResults(
-          document.getElementById('results')
-        );
-        search.onSearch((companies) => searchResults.displayCompany(companies));
       })();
     </script>
   </body>
