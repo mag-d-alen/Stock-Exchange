@@ -26,14 +26,14 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-    <script src="./js/constants.js"></script>
-    <script src="./js/Company.js"></script>
+    <script src="../js/constants.js"></script>
+    <script src="../js/company.js"></script>
     <script>
       (async function () {
         const urlParams = new URLSearchParams(window.location.search);
-        const symbol = urlParams.get('symbol');
+        const symbol = urlParams.get("symbol");
         const company = new Company(
-          document.getElementById('company-content-wrapper'),
+          document.getElementById("company-content-wrapper"),
           symbol
         );
       })();

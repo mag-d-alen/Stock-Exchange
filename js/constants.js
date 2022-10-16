@@ -1,12 +1,12 @@
 /** @format */
 
 const RESULTS_URL =
-  'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/';
-const LIMIT = '10';
+  "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/";
+const LIMIT = "10";
 const COMP_URL = `${RESULTS_URL}company/profile/`;
-const SYMBOL_SUFFIX = './company.html?symbol=';
+const SYMBOL_SUFFIX = "./html/company.html?symbol=";
 const HISTORIC_URL =
-  'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/historical-price-full/';
-const SERIE = '?serietype=line';
+  "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/historical-price-full/";
+const SERIE = "?serietype=line";
 const MARQUEE_URL =
-  'https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/available-traded/list';
+  "https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/available-traded/list";
